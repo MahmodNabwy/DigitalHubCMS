@@ -1,24 +1,65 @@
-﻿@inherits UmbracoViewPage
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
-
+﻿@using DigitalHubCMS.DTOS
 @{
-    var homePage = Model.AncestorOrSelf<ContentModels.Home>();
+
+    var items = new List<ContactItem>
+{
+    new ContactItem
+    {
+        Id = 1,
+        Icon = "<i class='fa-solid fa-phone-flip'></i>", // Replace with actual icon handling in C#
+        Label = "+201555553064",
+        Link = "tel:+201555553064"
+    },
+    new ContactItem
+    {
+        Id = 2,
+        Icon = "<i class='fa-solid fa-envelope'></i>", // Replace with actual icon handling in C#
+        Label = "info@digitalhub.com.eg",
+        Link = "mailto:info@digitalhub.com.eg"
+    },
+    new ContactItem
+    {
+        Id = 3,
+        Icon = "<i class='fa-solid fa-location-dot'></i>", // Replace with actual icon handling in C#
+        Label = "B7, Pearl des-rois, New Cairo",
+        Link = "https://www.google.com/maps/place/Pearl+des+rois/@30.0026662,31.501636,17z/data=!3m1!4b1!4m6!3m5!1s0x14582344de8b5225:0x6f3bf18c6c27dc76!8m2!3d30.0026662!4d31.5042109!16s%2Fg%2F11j7bm_ghm?entry=ttu"
+    }
+};
 }
 
 <!-- Footer-->
-<footer>
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                @if (homePage.SocialIconLinks != null && homePage.SocialIconLinks.Any())
-                {
-                    <ul class="list-inline text-center">
-                        @Html.GetBlockListHtml(homePage.SocialIconLinks)
-                    </ul>
-                }
-                <p class="small text-center text-muted fst-italic">@Umbraco.GetDictionaryValue("Footer.CopyrightTitle") &copy; @DateTime.Now.Year @Umbraco.GetDictionaryValue("Footer.CopyrightStatement")</p>
-                <p class="small text-center text-muted fst-italic">Theme by <a href="https://startbootstrap.com/" target="_blank" rel="noopener">Start Bootstrap</a>, implemented in Umbraco by Paul Seal from <a href="https://codeshare.co.uk" target="_blank" rel="noopener">codeshare.co.uk</a></p>
-            </div>
-        </div>
+<div class="w-full bg-bluesh md:min-h-[60vh]">
+    <div class="w-[70%] mx-auto flex flex-col 2xl:min-h-[50vh] 2xl:w-[60%]">
+        <!--ContactInfo-->
+        <div class="flex flex-wrap justify-around lg:flex-row lg:justify-between w-full text-sm h-auto md:h-[80px] lg:mt-[80px] mt-[30px] text-white">
+            @foreach (var item in items)
+            {
+                <a href="@item.Link" target="_blank"
+                   class="flex flex-row items-center text-xs md:text-sm mb-4 md:mb-0 md:mr-4">
+
+                    <div class="mr-2">
+                        @* @item.Icon.Substring(0,item.Icon.Length) *@
+                        @Html.Raw(item.Icon)
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="text-[14px] md:text-[13px] font-bold font-istok">
+                            @item.Label
+                        </div>
+                        
+                    </div>
+
+                </a>
+            }
+            <a to="/contact-us" class="flex flex-row items-center gap-2 text-xs md:text-sm mb-4 md:mb-0 md:mr-4">
+                <h1 class=" text-[12px] md:text-[13px] text-[#FFFFFF]">
+                GET IN TOUCH
+            </h1>
+                <i class="fa-solid fa-greater-than"></i>
+            </a>
+        </div>        
+        <!--ContactInfo-->
+        
+
     </div>
-</footer>
+</div>
+<!-- Footer-->
