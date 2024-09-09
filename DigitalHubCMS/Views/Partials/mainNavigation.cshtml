@@ -1,0 +1,26 @@
+﻿@inherits UmbracoViewPage
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+
+@{
+    var homePage = Model.AncestorOrSelf<ContentModels.Home>();
+}
+
+<div class="w-full transition-all duration-500 bg-transparent fixed z-[1000]">
+    <div class="flex justify-between items-center p-4 md:mx-[5%] 2xl:mx-[10%] transition-all duration-500">
+        <a href="@homePage.Url()">
+            @await Html.PartialAsync("Logo/logo")
+        </a>
+
+        <div class="hidden lg:flex flex-row  text-xs font-inter  justify-between transition-all duration-500 text-white 2xl:text-normal ">
+
+            <a class="border-b-2 border-orange mr-8 font-sans" href="@homePage.Url()">@homePage.Name</a>
+            
+            @foreach (var page in homePage.Children.Where(x => !x.Value<bool>("hideFromTopNavigation")))
+            {
+
+                <a class="border-b-2 border-orange mr-8 font-sans" href="@(page.Url())">@(page.Name)</a>
+               
+            }
+        </div>
+    </div>
+</div>
