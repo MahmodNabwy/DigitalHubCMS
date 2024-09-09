@@ -2,7 +2,7 @@
 
 @{
     var homePage = Model.AncestorOrSelf<Home>();
-    string domainAddress = homePage.Url(mode:UrlMode.Absolute).TrimEnd('/');
+    string domainAddress = homePage.Url(mode: UrlMode.Absolute).TrimEnd('/');
     string canonicalLink = domainAddress + Model.Url();
     string metaName = Model.Value<string>("metaName");
     string metaDescription = Model.Value<string>("metaDescription");
@@ -10,23 +10,145 @@
 }
 
 <meta charset="utf-8" />
-<link rel="icon" type="image/png" href="/media/favicon.png">
+<link rel="icon" type="image/png" href="/logo/logo.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            clifford: '#da373d',
-          }
-        }
-      }
+        theme: {
+            extend: {
+                screens: {
+                    "3xl": "1600px",
+                },
+                fontFamily: {
+                    inter: ["Inter", "sans-serif"],
+                    stardos: ["Stardos Stencil", "cursive"],
+                    poppins: ["Poppins", "sans-serif"],
+                    istok: ["Istok Web", "sans-serif"],
+                    roboto: ["Roboto", "sans-serif"],
+                    lato: ["Lato", "sans-serif"],
+                    robotoSerif: ["Roboto Serif", "sans-serif"],
+                },
+                colors: {
+                    divider: "#adadad",
+                    bluesh: "#0E71A1",
+                    orange: "#FF9900",
+                    greensh: "rgb(239,247,249)",
+                    gray: "#f8f8f8",
+                    holder: "#272729",
+                    sky: "#EDF7F9",
+                    semiGray: "#EDEEEE",
+                },
+                keyframes: {
+                    shake: {
+                        "0%, 100%": { transform: "rotate(0deg)" },
+                        "25%": { transform: "rotate(-10deg)" },
+                        "50%": { transform: "rotate(10deg)" },
+                        "75%": { transform: "rotate(-10deg)" },
+                        "90%": { transform: "rotate(0deg)" },
+                    },
+                    slider: {
+                        from: { transform: "translateX(0)" },
+                        to: { transform: "translateX(-100%)" },
+                    },
+                },
+                animation: {
+                    shake: "shake 0.7s ease-in-out 1s infinite",
+                    slider: "slider 40s linear infinite",
+                },
+                backgroundImage: {
+                    "hero-one":
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fhome_gallery%2FHero%201.png?alt=media&token=c4a06ade-82db-44fc-8f2a-7afa0e4334c3')",
+                    "hero-two":
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fhome_gallery%2FHero%202.png?alt=media&token=c8ec90e1-c514-4301-8ab0-b94eeec28347')",
+                    "hero-three":
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fhome_gallery%2FHero%203.png?alt=media&token=53e9109a-224d-4d3a-81a5-ec801b3e4632')",
+                    "hero-four":
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fhome_gallery%2FHero%204.png?alt=media&token=d2474edd-ece1-4f35-ac7e-996dbbcf7ed9')",
+                    "hero-five":
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fhome_gallery%2FHero%203.png?alt=media&token=53e9109a-224d-4d3a-81a5-ec801b3e4632')",
+                    "hero-six":
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2FheroSectionSix.svg?alt=media&token=c86e1f2b-f41b-4b2d-abad-5f11f8b1d843')",
+                    aboutHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fabout%2FAbout%20Us%20Page.png?alt=media&token=75849df0-1444-41d4-bf98-5c990a932c8b')",
+                    numberBG:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fabout%2FnumberBackground.svg?alt=media&token=02e9c122-f4b5-4aed-bd9c-45cdfb2f3fa4')",
+
+                    teamHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fteam%2Fhero.svg?alt=media&token=18ca8805-f953-4077-bdb6-6d64ef4504df')",
+                    mrkarimabout:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fabout%2Fmr-karim.jpg?alt=media&token=faf242b5-dfd7-490a-86ad-ecd00f9449de')",
+                    blogsHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2FBlogs%20Page.png?alt=media&token=90e00cb0-f484-438b-8755-479abd096a55')",
+                    blogsPlaceholder:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fblogs_placeholder.png?alt=media&token=d0840e1a-42d0-4e08-972a-1f6e84d64105')",
+                    careersHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2FCareers%20Page.png?alt=media&token=8a3c5675-bf1e-434e-9c95-bce17a7f9579')",
+                    opportunities:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2Fjobs_background.svg?alt=media&token=69fb2b0c-5e51-4058-9403-22937e30c2bc')",
+                    applyNow:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2Fapply_now.svg?alt=media&token=2ff38bdd-2e52-4721-a653-bca79106b87a')",
+                    serviceHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Four_service_hero.svg?alt=media&token=3545ecb3-9ee6-4131-9c35-3d1c05d65779')",
+                    serviceCardOne:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Four_service_card_one.svg?alt=media&token=59779d17-b72a-4928-8743-1723c1a48de8')",
+                    serviceCardTwo:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Four_service_card_two.svg?alt=media&token=59779d17-b72a-4928-8743-1723c1a48de8')",
+                    serviceCardThree:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Four_service_card_three.svg?alt=media&token=59779d17-b72a-4928-8743-1723c1a48de8')",
+                    dataHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2FData%20Science%20Page.png?alt=media&token=ef71a6e4-19a5-42d9-b7ca-f63e94af7cb1')",
+                    paraOne:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2FWhy%20Data%20Science.png?alt=media&token=fed2bba4-85a5-4c12-9761-806a4ce15325')",
+                    paraTwo:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2FData%20Science%20Process.png?alt=media&token=22118b54-1cb8-4929-a08d-addfbb4ade27')",
+                    serviceGraph:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2Fservice_graph.svg?alt=media&token=282eb28a-52f2-41e5-ac9e-63afcef52d00')",
+                    rightRectangle:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2Fright_rectangle.svg?alt=media&token=ef22ea98-c0bf-4be8-b107-367b01b1cfda')",
+                    leftRectangle:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2Flef_rectangle.svg?alt=media&token=9be84822-8b8d-47e2-a35c-878eaac624bd')",
+                    lamp: "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2Fbenefit_data_sceince.svg?alt=media&token=4f3daee7-9edc-4e39-8ab8-9b9fb700ea6f')",
+                    serviceMain:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2FsampleMain.svg?alt=media&token=a5864596-670c-4038-b5d6-19a24ab80ccc')",
+                    serviceContact:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fcontact.svg?alt=media&token=aebeaef9-c70a-4f1d-84f8-355ddf7aa13a')",
+                    aiHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fai%2FAI%20Transformation%20Page.png?alt=media&token=33a04f71-cebb-428c-9100-2641754f81c6')",
+                    sourceHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Foutsourcing%2Fhero.svg?alt=media&token=48ae538f-6fa1-4ef0-bbc5-a16a9ac9c5f8')",
+                    sourceMain:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Foutsourcing%2Fmain.svg?alt=media&token=dff66f0a-df38-424b-8a42-156444c3fcc8)",
+                    benefitMain:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Foutsourcing%2Fbenefitbg.svg?alt=media&token=28805e38-03fa-4bcf-8d4f-57d3a8fa9393)",
+                    youssefCareer:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2Fyoussef.svg?alt=media&token=74c31c6b-1a34-4cdf-8168-b52129cee5e9')",
+                    aliCareer:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2Fali.svg?alt=media&token=c43dadb1-bb06-4446-a386-4cb541904207')",
+                    endiCareer:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2Fendi.svg?alt=media&token=2bd405de-ae74-4409-9829-77b46544102a')",
+                    lailaCareer:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fcareers%2Flaila.svg?alt=media&token=2291cf51-30a3-415e-8e39-1579a0bccff7')",
+                    aboutBgLeft:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fabout%2FbgColor.png?alt=media&token=1d0c4d4f-db5e-4337-bee3-c79869009587')",
+                    aboutBgRight:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fabout%2FbgRoundRight.png?alt=media&token=4fea6f9d-860e-45ad-931a-20935d789481')",
+                    aboutFrame:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fabout%2FmessageFrame.svg?alt=media&token=1a889cb8-a29e-4f97-91a7-8c25d943a157')",
+                    capmasHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fdata-science%2Fcapmas.svg?alt=media&token=2ace65d4-f81e-47f0-8fde-500b86ed26c0')",
+                    galleryHero:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2FGallery%2FGallery%20Page.png?alt=media&token=db3e9d10-a1bd-4d3a-916d-0faf6b98a353')",
+                    aiBenifit:
+                        "url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fservices%2Fai%2Fai.svg?alt=media&token=7488ad47-8e30-4066-be87-9322d10c0ac9')",
+                },
+            },
+        },
     }
 </script>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>
-    @string.Format("{0} | {1}", Model.Name, Umbraco.GetDictionaryValue("Navigation.SiteName"))
+    @Umbraco.GetDictionaryValue("Navigation.SiteName")
 </title>
 <meta name="Description" content="@(metaDescription ?? @Model.Name)" />
 <meta name="Name" content="@metaName" />

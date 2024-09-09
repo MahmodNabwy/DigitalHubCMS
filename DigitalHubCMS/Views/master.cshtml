@@ -3,18 +3,22 @@
 @{
     Layout = null;
 
+    SmidgeHelper.RequiresCss("~/public/main.css");
     SmidgeHelper.RequiresCss("~/clean-assets/css/styles.css");
     SmidgeHelper.RequiresJs("~/clean-assets/js/scripts.js");
+    SmidgeHelper.RequiresJs("~/public/main.js");
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     @await Html.PartialAsync("~/Views/Partials/metaData.cshtml")
+    
     <!-- Font Awesome icons (free version)-->
     <script defer src="https://use.fontawesome.com/releases/v6.5.1/js/all.js" crossorigin="anonymous" integrity="sha384-3ve3u7etWcm2heCe4TswfZSAYSg2jR/EJxRHuKM5foOiKS8IJL/xRlvmjCaHELBz"></script>
     <!-- Google fonts-->
     <link rel="stylesheet preconnect" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet preconnect" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&display=swap">
     <!-- Core theme CSS (includes Bootstrap)-->
     @await SmidgeHelper.CssHereAsync(debug: false)
