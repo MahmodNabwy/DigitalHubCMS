@@ -5,6 +5,7 @@
 
 @{
     Layout = "master.cshtml";
+
 }
 
 <div class="w-full h-[500px] bg-cover bg-center bg-no-repeat flex justify-start items-end bg-holder"
@@ -22,7 +23,6 @@
     <div class="diagonal-bg">
         <div class="lg:mx-[15%] mx-[5%] pt-1 ">
             <!--Search Area-->
-            
             <!--Search Area-->
 
             <div class="w-full flex flex-col gap-4 items-center mt-8">
@@ -33,10 +33,18 @@
                     Explore insights, tips and consultation about Data Science, AI
                     Transformation and Outsourcing
                 </p>
-            </div>           
+            </div>
+            <div class="w-full">
+                <div class="lg:w-[70%] md:w-[80%] flex flex-row justify-between mt-9 mx-auto lg:pl-0 md:pl-4">
+                    @Html.GetBlockListHtml(Model.Categories)
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 
-   
+
 }
 
