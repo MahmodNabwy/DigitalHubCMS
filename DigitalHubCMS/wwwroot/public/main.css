@@ -1,7 +1,26 @@
 ﻿.font-inter {
-    font-family: Inter
+    font-family: Inter;
 }
 
 .bg-blogsHero {
     background-image: url('https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2FBlogs%20Page.png?alt=media&token=90e00cb0-f484-438b-8755-479abd096a55');
+}
+
+.drawer-continer {
+    background-color: #242B3A;
+    color: #2C3659;
+}
+
+.hamburgerBtn {
+    --tw-text-opacity: 1;
+    color: rgb(14 113 161 / var(--tw-text-opacity));
+}
+/* Default hover state for navScroll */
+.nav-items:hover {
+    color: inherit; /* Example hover style */
+}
+
+/* Disable hover when .text-white is applied */
+.navScroll.text-white:hover {
+    color: inherit; /* Removes hover effect */
 }

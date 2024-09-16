@@ -6,33 +6,35 @@
     var currentPath = Context.Request.Path.ToString();
 }
 
-<div id="scrollDiv" class="w-full h-20 fixed z-[1000] transition-all duration-500 bg-transparent text-white">
+<div id="scrollDiv" class="w-full h-20 fixed z-[1000] transition-all duration-500 bg-transparent text-white ">
 
     <div class="flex justify-between items-center p-4 md:mx-[5%]  2xl:mx-[10%]  transition-all duration-500">
-        <a href="@homePage.Url()">
+
+        <!--Logo-->
+        <a href="@homePage.Url()" class=" z-[1000]">
             @await Html.PartialAsync("Logo/logo")
         </a>
+        <!--Logo-->
+        <!--Nav bar contents-->
+        <div id="navScroll" class="hidden nav-items lg:flex flex-row gap-6 text-xs font-inter  justify-between transition-all duration-500  2xl:text-normal">
 
-        <div id="navScroll" class="hidden lg:flex flex-row gap-6 text-xs font-inter  justify-between transition-all duration-500  2xl:text-normal">
-
-            <a href="@homePage.Url()" class="font-inter  mr-4 @(homePage.Url().Contains(Context.Request.Path)?"border-b-2 border-yellow-500":"")">
+            <a href="@homePage.Url()" class="font-inter nav-items mr-4 @(homePage.Url().Contains(Context.Request.Path)?"border-b-2 border-yellow-500":"")">
                 @homePage.Name
             </a>
-
 
             @foreach (var page in homePage.Children.Where(x => !x.Value<bool>("hideFromTopNavigation")))
             {
 
 
                 <div class="flex gap-2 justify-center items-center">
-                    <a href="@(page.Url())">
+                    <a href="@(page.Url())" class="nav-items">
 
                         <img src="~/assets/arrowDown.svg"
                              alt="arrow"
                              class="h-2/6 @(page.Name.ToString()=="Services" ? "" :"hidden")" />
                     </a>
 
-                    <a class="font-inter mr-4   @(currentPath.Contains(page.Url())?"border-b-2 border-orange":"")"
+                    <a class="font-inter mr-4 nav-items  @(currentPath.Contains(page.Url())?"border-b-2 border-orange":"")"
                        href="@(page.Url())">
                         @(page.Name)
                     </a>
@@ -43,19 +45,15 @@
 
             }
         </div>
-   
-     
+        <!--Nav bar contents-->
         <!--Drawer-->
         @await Html.PartialAsync("Drawer/drawer")
         <!--Drawer-->
-       
-
-
 
     </div>
 </div>
 <script>
- 
+
     function handleScroll() {
         var scrollDiv = document.getElementById('scrollDiv');
         var navScroll = document.getElementById('navScroll');
@@ -84,7 +82,6 @@
 </script>
 
 <style>
-    /* Additional style to visualize changes */
     .scrolled {
         transition: background-color 0.5s ease;
     }
