@@ -1,8 +1,28 @@
-﻿@{
+﻿ 
+@{
     var LogoImage = "https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Flogo.svg?alt=media&token=9ce3c4d2-29fd-4596-92e1-82124a67b72d";
     var whiteLogo = "https://firebasestorage.googleapis.com/v0/b/digital-hub-website.appspot.com/o/assets%2Fwhite_logo.svg?alt=media&token=ed3b1336-c78a-45a9-8eeb-c77620e715e8";
 }
-<img src=@whiteLogo
-     alt="logo"
-     width={70}
-     class="cursor-pointer" />
+
+<div id="scrollDiv" class="w-fit transition-all duration-500 bg-transparent fixed z-[1000]">
+    <img id="logo" src="@whiteLogo" alt="logo" width="70" class="cursor-pointer" />
+</div>
+
+<script>
+    function handleScroll() {
+        var scrollDiv = document.getElementById('scrollDiv');
+        var logo = document.getElementById('logo');
+
+        if (window.scrollY > 0) {
+            scrollDiv.classList.add('bg-white', 'border-b-[1px]', 'border-[#C4C4C4]');
+            scrollDiv.classList.remove('bg-transparent');
+            logo.src = "@LogoImage"; // Switch to the regular logo when scrolled
+        } else {
+            scrollDiv.classList.remove('bg-white', 'border-b-[1px]', 'border-[#C4C4C4]');
+            scrollDiv.classList.add('bg-transparent');
+            logo.src = "@whiteLogo"; // Switch to the white logo at the top
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+</script>

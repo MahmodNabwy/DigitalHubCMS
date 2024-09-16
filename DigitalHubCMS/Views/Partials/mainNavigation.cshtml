@@ -4,31 +4,93 @@
 @{
     var homePage = Model.AncestorOrSelf<ContentModels.Home>();
     var currentPath = Context.Request.Path.ToString();
-
 }
 
-<div class="w-full transition-all duration-500 bg-transparent fixed z-[1000] mt-0">
+<div id="scrollDiv" class="w-full h-20 fixed z-[1000] transition-all duration-500 bg-transparent text-white">
+
     <div class="flex justify-between items-center p-4 md:mx-[5%]  2xl:mx-[10%]  transition-all duration-500">
         <a href="@homePage.Url()">
             @await Html.PartialAsync("Logo/logo")
         </a>
 
-        <div class="hidden lg:flex flex-row gap-6 text-xs font-inter  justify-between transition-all duration-500 text-white 2xl:text-normal">
+        <div id="navScroll" class="hidden lg:flex flex-row gap-6 text-xs font-inter  justify-between transition-all duration-500  2xl:text-normal">
 
-            <a href="@homePage.Url()" class="font-inter text-white mr-4 @(homePage.Url().Contains(Context.Request.Path)?"border-b-2 border-yellow-500":"")">
+            <a href="@homePage.Url()" class="font-inter  mr-4 @(homePage.Url().Contains(Context.Request.Path)?"border-b-2 border-yellow-500":"")">
                 @homePage.Name
             </a>
 
 
             @foreach (var page in homePage.Children.Where(x => !x.Value<bool>("hideFromTopNavigation")))
             {
-                <a class="font-inter mr-4 text-white   @(currentPath.Contains(page.Url())?"border-b-2 border-yellow-500 ":"")"
-                   href="@(page.Url())">
-                    @(page.Name)
-                </a>
+
+
+                <div class="flex gap-2 justify-center items-center">
+                    <a href="@(page.Url())">
+
+                        <img src="~/assets/arrowDown.svg"
+                             alt="arrow"
+                             class="h-2/6 @(page.Name.ToString()=="Services" ? "" :"hidden")" />
+                    </a>
+
+                    <a class="font-inter mr-4   @(currentPath.Contains(page.Url())?"border-b-2 border-orange":"")"
+                       href="@(page.Url())">
+                        @(page.Name)
+                    </a>
+                </div>
+
+
 
 
             }
         </div>
+   
+     
+        <!--Drawer-->
+        @await Html.PartialAsync("Drawer/drawer")
+        <!--Drawer-->
+       
+
+
+
     </div>
 </div>
+<script>
+ 
+    function handleScroll() {
+        var scrollDiv = document.getElementById('scrollDiv');
+        var navScroll = document.getElementById('navScroll');
+        var hamburgerBtn = document.getElementById('hamburgerBtn');
+
+
+        if (window.scrollY > 0) {
+            scrollDiv.classList.add('scrolled');
+            scrollDiv.classList.add('navScroll');
+            scrollDiv.classList.add('bg-white', 'border-b-[1px]', 'border-[#C4C4C4]');
+            scrollDiv.classList.remove('bg-transparent');
+            navScroll.classList.add('text-bluesh');
+            navScroll.classList.remove('text-white');
+            hamburgerBtn.classList.add('hamburgerBtn');
+        } else {
+            navScroll.classList.add('text-white');
+            scrollDiv.classList.add('bg-transparent');
+            navScroll.classList.remove('text-bluesh');
+            hamburgerBtn.classList.remove('hamburgerBtn');
+            scrollDiv.classList.remove('scrolled');
+            scrollDiv.classList.remove('bg-white', 'border-b-[1px]', 'border-[#C4C4C4]');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+</script>
+
+<style>
+    /* Additional style to visualize changes */
+    .scrolled {
+        transition: background-color 0.5s ease;
+    }
+
+    .hamburgerBtn {
+        --tw-text-opacity: 1;
+        color: rgb(14 113 161 / var(--tw-text-opacity));
+    }
+</style>
