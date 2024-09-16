@@ -1,6 +1,36 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@* @using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CategoryList>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
 	Layout = null;
+} *@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CategoryList>
+
+@using Clean.Core.Models.ViewModels
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+
+@{
+    Layout = "master.cshtml";
+}
+
+<div class="w-full h-[500px] bg-cover bg-center bg-no-repeat flex justify-start items-end bg-holder"
+     style="background-image:url('@Model.MainImage.GetCropUrl(1903, 628)')">
+    <h1 class="lg:text-[50px] text-[3rem] md:text-[40px]  font-[200] font-inter text-[#BDBDBD] leading-[46px] p-10">
+        Our <br />
+        <span class="lg:text-[50px] text-[2rem]  md:text-[40px] md:pr-[20px] lg:pr-0 font-bold text-bluesh">
+            Categor
+        </span>
+    </h1>
+</div>
+@if (Model.ContentRows != null)
+{
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    @Html.GetBlockListHtml(Model.ContentRows)
+                </div>
+            </div>
+        </div>
+    </article>
 }

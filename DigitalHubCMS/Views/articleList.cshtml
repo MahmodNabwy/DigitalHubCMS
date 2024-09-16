@@ -18,14 +18,25 @@
 </div>
 @if (Model.ContentRows != null)
 {
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    @Html.GetBlockListHtml(Model.ContentRows)
-                </div>
-            </div>
+
+    <div class="diagonal-bg">
+        <div class="lg:mx-[15%] mx-[5%] pt-1 ">
+            <!--Search Area-->
+            
+            <!--Search Area-->
+
+            <div class="w-full flex flex-col gap-4 items-center mt-8">
+                <h1 class="lg:text-[3rem] md:text-[2rem] text-[1.5rem] font-medium text-bluesh font-roboto text-center">
+                    Welcome to Digital Hub Blogs
+                </h1>
+                <p class="lg:text-[1.5rem] text-[1rem] text-bluesh/60 font-thin text-center font-roboto lg:w-[70%] w-[90%]">
+                    Explore insights, tips and consultation about Data Science, AI
+                    Transformation and Outsourcing
+                </p>
+            </div>           
         </div>
-    </article>
+    </div>
+
+   
 }
 
