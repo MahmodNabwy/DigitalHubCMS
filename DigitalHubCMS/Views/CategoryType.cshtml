@@ -1,0 +1,12 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CategoryType>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var siteSection = Model.AncestorOrSelf(2);
+    var selection = siteSection.Children.Where(x => x.IsVisible());
+}
+
+@foreach (var item in selection)
+{
+    <a class="nav-link nav-link--black nav-link--air-bottom ">@item.Name</a>
+}

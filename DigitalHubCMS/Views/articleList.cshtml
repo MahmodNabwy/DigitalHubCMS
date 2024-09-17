@@ -5,7 +5,7 @@
 
 @{
     Layout = "master.cshtml";
-
+    
 }
 
 <div class="w-full h-[500px] bg-cover bg-center bg-no-repeat flex justify-start items-end bg-holder"
@@ -35,9 +35,13 @@
                 </p>
             </div>
             <div class="w-full">
-                <div class="lg:w-[70%] md:w-[80%] flex flex-row justify-between mt-9 mx-auto lg:pl-0 md:pl-4">
-                    @Html.GetBlockListHtml(Model.Categories)
-                </div>
+                @* <div class="flex   justify-between mt-9 mx-auto lg:pl-0 md:pl-4">
+
+
+            @Html.GetBlockListHtml(Model.Categories)
+
+            </div> *@
+                @Html.GetBlockListHtml(Model.ContentRows)
             </div>
 
 
@@ -47,4 +51,8 @@
 
 
 }
+
+
+ 
+
 
