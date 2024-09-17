@@ -1,26 +1,44 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CategoriesPage>
-
 @using Clean.Core.Models.ViewModels
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
-
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-    // Get all the CategoryType nodes under the current CategoriesPage
-    var categories = Model.Children.Where(x => x.ContentType.Alias == "CategoryType");
+    var siteSection = Model.AncestorOrSelf(2);
+    var selection = siteSection.Children.Where(x => x.IsVisible());
+ 
 }
 
-<h1>@Model.Name</h1>
+@foreach (var item in selection)
+{
+    <a class="nav-link nav-link--black nav-link--air-bottom ">@item.Name</a>
+}
+
 
 @if (Model.ContentRows != null)
 {
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    @Html.GetBlockListHtml(Model.ContentRows)
 
+    <div class="diagonal-bg">
+        <div class="lg:mx-[15%] mx-[5%] pt-1 ">
+            <!--Search Area-->
+            <!--Search Area-->
 
-                </div>
+            <div class="w-full flex flex-col gap-4 items-center mt-8">
+                <h1 class="lg:text-[3rem] md:text-[2rem] text-[1.5rem] font-medium text-bluesh font-roboto text-center">
+                    Welcome to Digital Hub Blogs
+                </h1>
+                <p class="lg:text-[1.5rem] text-[1rem] text-bluesh/60 font-thin text-center font-roboto lg:w-[70%] w-[90%]">
+                    Explore insights, tips and consultation about Data Science, AI
+                    Transformation and Outsourcing
+                </p>
             </div>
+            <div class="w-full">
+
+                @Html.GetBlockListHtml(Model.ContentRows)
+            </div>
+
+
         </div>
-    </article>
+    </div>
+
+
 }
