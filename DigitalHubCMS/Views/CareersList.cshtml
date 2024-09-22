@@ -1,0 +1,118 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.CareersList>
+@using Clean.Core.Models.ViewModels
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+@{
+    Layout = "master.cshtml";
+
+}
+
+<div class="w-full h-[500px] bg-cover bg-center bg-no-repeat flex justify-start items-end bg-holder"
+     style="background-image:url('@Model.MainImage.GetCropUrl(1903, 628)')">
+    <h1 class="lg:text-[50px] text-[3rem] md:text-[40px]  font-[200] font-inter text-[#BDBDBD] leading-[46px] p-10">
+
+        <span class="lg:text-[50px] text-[2rem]  md:text-[40px] md:pr-[20px] lg:pr-0 font-bold text-bluesh">
+            Careers
+        </span>
+    </h1>
+</div>
+
+<div class="lg:mx-[15%] mx-[5%]  flex flex-col gap-4 items-start md:mb-0">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 gap-4  items-center md:mt-36 md:mb-14 w-[100%]">
+        <div class="col-span-1 flex flex-col gap-4 ">
+            <div class="bg-orange rounded-lg p-4 aspect-square flex flex-col justify-center items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] w-full">
+                <div class="flex flex-col">
+                    <h1 class="text-white text-2xl 2xl:text-3xl font-semibold font-lato italic">
+                        OUR
+                    </h1>
+                    <h1 class="text-white text-2xl 2xl:text-3xl font-semibold font-lato italic">
+                        VALUES
+                    </h1>
+                </div>
+            </div>
+            <div class="rounded-lg p-4 w-full aspect-square flex flex-col justify-center items-center bg-lailaCareer bg-cover bg-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]"></div>
+        </div>
+
+        <div class="col-span-1 flex md:flex-col flex-col-reverse  gap-4 md:mt-[-70px]">
+            <div class=" rounded-lg p-4 w-full aspect-square flex flex-col justify-center items-center bg-endiCareer bg-cover bg-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]"></div>
+
+            <div class="bg-white rounded-lg p-4 md:aspect-square flex flex-col justify-start items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden">
+                <div class="flex flex-col justify-around items-start m-2">
+                    <p class="text-bluesh text-2xl  md:text-lg font-semibold  2xl:text-2xl 2xl:my-4">
+                        Innovation Technology
+                    </p>
+                    <h1 class="text-bluesh text-lg md:text-[12px] md:leading-4 2xl:text-normal">
+                        Innovation is our core. we use cutting-edge technology to stay
+                        ahead and drive progress. By joining Digital-Hub, you'll work on
+                        ground-breaking projects with the latest tools, making a real
+                        impact in the industry.
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-span-1 flex flex-col gap-4 md:mt-[-140px]">
+            <div class="bg-white rounded-lg p-4 w-full md:aspect-square flex flex-col justify-start items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden">
+                <div class="flex flex-col justify-around items-start m-2 ">
+                    <h1 class="text-bluesh text-xl  md:text-lg font-semibold 2xl:text-2xl 2xl:my-4">
+                        Culture Transparency
+                    </h1>
+                    <h1 class="text-bluesh text-lg md:text-xs 2xl:text-normal">
+                        Transparency is key. We believe in open communication and
+                        honesty, creating a trusting and collaborative environment. Join
+                        us to be part of a culture where your voice is heard and valued.
+                    </h1>
+                </div>
+            </div>
+            <div class=" rounded-lg p-4 aspect-square flex flex-col justify-center items-center bg-aliCareer bg-cover bg-center shadow-[0_3px_10px_rgb(0,0,0,0.2)]"></div>
+        </div>
+
+        <div class="col-span-1 flex md:flex-col flex-col-reverse gap-4 md:mt-[-210px]">
+            <div class=" rounded-lg aspect-square flex flex-col justify-center items-center bg-youssefCareer bg-cover bg-center"></div>
+
+            <div class="bg-white rounded-lg p-4 w-full md:aspect-square flex flex-col justify-start items-center shadow-[0_3px_10px_rgb(0,0,0,0.2)] overflow-hidden">
+                <div class="flex flex-col justify-around items-start m-2">
+                    <h1 class="text-bluesh text-2xl  md:text-lg font-semibold  2xl:text-2xl 2xl:my-4">
+                        Diversity
+                    </h1>
+                    <h1 class="text-bluesh text-lg md:text-xs 2xl:text-normal">
+                        Diversity fuels our creativity and innovation. We bring together
+                        people from various backgrounds and perspectives, fostering a
+                        rich exchange of ideas. Join us to be part of a team that values
+                        and celebrates your unique contributions.
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--Opportunities-->
+@if (Model.ContentRows != null)
+{
+
+
+    <div class="2xl:mx-[15%] lg:mx-[10%] mx-[5%] mb-20">
+        <div class="flex md:flex-row flex-col justify-between items-center md:px-10">
+            <h1 class="text-bluesh text-[2rem] font-semibold font-roboto">
+                Current Opportunities <span class="text-orange">/</span>
+            </h1>
+            <h1 class="text-bluesh font-thin">
+                We're always on the lookout for talented people
+            </h1>
+        </div>
+        <div class="bg-opportunities bg-cover bg-center bg-no-repeat rounded-xl mt-10 ">
+            <div class="md:p-10 md:pb-20 pb-10 p-5">
+                <div class="flex justify-between items-center mb-4 p-4 lg:mx-10 border-b-2 border-[#bdbdbd27]">
+                    @Model.Title
+                    @Model.Subtitle                    
+                    @Html.GetBlockListHtml(Model.ContentRows)
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+}
